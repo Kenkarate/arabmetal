@@ -1,4 +1,4 @@
-/* Nextin HTML Template */
+/* Arab Metals HTML Template */
 
 @media only screen and (max-width: 7000px){
 	.page-wrapper{
@@ -405,7 +405,7 @@
 	}
 
 	.timeline__item:after {
-	    background: #f57f4b;
+	    background: #000000;
 	    border: 0px;
 	    height: 12px;
 	    width: 12px;

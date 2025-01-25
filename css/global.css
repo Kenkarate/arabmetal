@@ -206,7 +206,7 @@ img {
 	width: 100%;
 	height: 100%;
 	z-index: 999999;
-	background-color: #252733;
+	background-color: #000000;
 	background-position: center center;
 	background-repeat: no-repeat;
 }
@@ -574,7 +574,7 @@ img {
 .owl-nav-style-one .owl-nav .owl-prev {
 	position: relative;
 	border-radius: 50%;
-	color: #fff;
+	color: #ffffff;
 	font-size: 14px;
 	text-align: center;
 	background-color: #403ab4;

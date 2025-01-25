@@ -686,13 +686,13 @@
 	left:120px;
 	width:78px;
 	height:78px;
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0);
 	line-height:62px;
 	text-align:center;
 	font-size:21px;
-	border: 8px solid rgba(255, 255, 255, 0.30);
+	border: 8px solid rgba(255, 255, 255, 0);
 	display:inline-block;
-	background-color:rgba(255, 255, 255, 0.10);
+	background-color:rgba(255, 255, 255, 0);
 	transition:all 500ms ease;
 	-moz-transition:all 500ms ease;
 	-webkit-transition:all 500ms ease;
@@ -706,13 +706,13 @@
 	right:120px;
 	width:78px;
 	height:78px;
-	color: rgba(255, 255, 255, 0.50);
+	color: rgba(255, 255, 255, 0);
 	line-height:62px;
 	text-align:center;
 	font-size:21px;
-	border: 8px solid rgba(255, 255, 255, 0.30);
+	border: 8px solid rgba(255, 255, 255, 0);
 	display:inline-block;
-	background-color:rgba(255, 255, 255, 0.10);
+	background-color:rgba(255, 255, 255, 0);
 	transition:all 500ms ease;
 	-moz-transition:all 500ms ease;
 	-webkit-transition:all 500ms ease;
@@ -723,7 +723,7 @@
 .main-slider .owl-nav .owl-prev:hover,
 .main-slider .owl-nav .owl-next:hover{
 	color:#fff;
-	border-color: #fff;
+	border-color: #ffffff00;
 }
 
 .main-slider .left-side {

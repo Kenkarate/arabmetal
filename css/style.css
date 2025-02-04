@@ -187,7 +187,7 @@
 .main-menu .navigation > li{
 	position:relative;
 	float:left;
-	padding: 45px 40px;
+	padding: 45px 20px;
 	-webkit-transition:all 300ms ease;
 	-moz-transition:all 300ms ease;
 	-ms-transition:all 300ms ease;
@@ -2380,7 +2380,7 @@
 }
 
 .main-footer .about-widget .contact-number a {
-	color: #000000;
+	color: #fff;
 }
 
 /* Link Widget */
@@ -2424,7 +2424,7 @@
 
 .contact-widget h5 {
 	font-size: 16px;
-	color: #000000;
+	color: #ffffff;
 	text-transform: uppercase;
 	margin-bottom: 5px;
 }

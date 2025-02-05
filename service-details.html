@@ -19,6 +19,7 @@
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
+
 <body>
 
 <div class="page-wrapper">
@@ -171,18 +172,16 @@ Riyadh, Kingdom of Saudi Arabia</li>
                 <li><a href="#">Pages</a></li>
                 <li>Service Details</li>
             </ul>
-            <h1>Service Details</h1>
+            <h1>Completed Projects</h1>
         </div>
     </section>
     <!--End Page Title-->
 
     <!-- OLD gallery -->
-    <section class="service-details sp-two">
+    <!-- <section class="service-details sp-two">
         <div class="auto-container">
             <h2>CANOPIES & SKYLIGHTS</h2>
-            <div class="row" style="@media (max-width: 768px) {
-                padding: 15%;
-            }">
+            <div class="row" >
                 <div class="col-lg-3 col-md-6">
                     <div class="image"><img src="images/resource/image-14.jpg" alt=""></div>
                 </div>
@@ -197,9 +196,9 @@ Riyadh, Kingdom of Saudi Arabia</li>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- OLD gallery -->
-    
+    <div id="services-container"></div>
 
 
    
@@ -479,9 +478,87 @@ Riyadh, Kingdom of Saudi Arabia</div>
 <script src="js/map-script.js"></script>
 <!--End Google Map APi-->
 
+old gallery <script>
+    // Sample JSON data for services
+    const servicesData = {
+      "services": [
+        {
+          "title": "Canopies & Skylights",
+          "images": [
+            "images/photos/ALUMINIUM FABRICATIONS/1.jpeg",
+            "images/photos/ALUMINIUM FABRICATIONS/2.jpeg",
+            "images/photos/ALUMINIUM FABRICATIONS/3.jpg",
+          ]
+        },
+        {
+          "title": "Awnings",
+          "images": [
+            "images/resource/image-15.jpg",
+            "images/awnings/image-2.jpg",
+            "images/awnings/image-3.jpg",
+            "images/awnings/image-4.jpg"
+          ]
+        },
+        {
+          "title": "Glass Partitions",
+          "images": [
+            "images/partitions/image-1.jpg",
+            "images/partitions/image-2.jpg",
+            "images/partitions/image-3.jpg",
+            "images/partitions/image-4.jpg"
+          ]
+        }
+      ]
+    };
+
+    // Function to create service sections
+    function generateServiceSections() {
+        const container = document.getElementById('services-container');
+
+        servicesData.services.forEach(service => {
+            const section = document.createElement('section');
+            section.classList.add('service-details', 'sp-two');
+
+            const autoContainer = document.createElement('div');
+            autoContainer.classList.add('auto-container');
+
+            const title = document.createElement('h2');
+            title.textContent = service.title;
+            autoContainer.appendChild(title);
+
+            const row = document.createElement('div');
+            row.classList.add('row');
+            // Add a media query inline style
+            row.setAttribute('style', '@media (max-width: 768px) { padding: 15%; }');
+
+            service.images.forEach(image => {
+                const col = document.createElement('div');
+                col.classList.add('col-lg-3', 'col-md-6');
+                
+                const imageDiv = document.createElement('div');
+                imageDiv.classList.add('image');
+
+                const img = document.createElement('img');
+                img.setAttribute('src', image);
+                img.setAttribute('alt', 'Service Image');
+                imageDiv.appendChild(img);
+
+                col.appendChild(imageDiv);
+                row.appendChild(col);
+            });
+
+            autoContainer.appendChild(row);
+            section.appendChild(autoContainer);
+            container.appendChild(section);
+        });
+    }
+
+    // Call the function to generate the sections when the page loads
+    window.onload = generateServiceSections;
+</script>
 
 <!-- new gallery -->
-<script>
+<!-- <script>
     $(document).ready(function() {
 
 $("[unique-script-id='w-w-dm-id'] .btn-box").click(function() {
@@ -507,7 +584,7 @@ $("[unique-script-id='w-w-dm-id'] .list").click(function() {
   $(this).addClass('active').siblings().removeClass('active');
 })
 })
-</script>
+</script> -->
 <!-- new gallery -->
 
 </body>

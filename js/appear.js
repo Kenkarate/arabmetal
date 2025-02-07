@@ -19,7 +19,7 @@
             //call fn only on the first appear?
             one: true,
 
-            // X & Y accuracy
+            //X & Y accuracy
             accX: 0,
             accY: 0
 

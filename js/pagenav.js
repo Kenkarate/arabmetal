@@ -19,7 +19,7 @@
 
 (function($, window, document, undefined){
 
-	// our plugin constructor
+	//our plugin constructor
 	var OnePageNav = function(elem, options){
 		this.elem = elem;
 		this.$elem = $(elem);
@@ -32,7 +32,7 @@
 		this.docHeight = this.$doc.height();
 	};
 
-	// the plugin prototype
+	//the plugin prototype
 	OnePageNav.prototype = {
 		defaults: {
 			navItems: 'a',
@@ -48,8 +48,8 @@
 		},
 
 		init: function() {
-			// Introduce defaults that can be extended either
-			// globally or using an object literal.
+			//Introduce defaults that can be extended either
+			//globally or using an object literal.
 			this.config = $.extend({}, this.defaults, this.options, this.metadata);
 
 			this.$nav = this.$elem.find(this.config.navItems);

@@ -298,7 +298,7 @@
 	}, {
 		filter: [ 'width', 'items', 'settings' ],
 		run: function(cache) {
-			var width = (this.width() / this.settings.items).toFixed(3) - this.settings.margin,
+			var width = (this.width()/this.settings.items).toFixed(3) - this.settings.margin,
 				merge = null,
 				iterator = this._items.length,
 				grid = !this.settings.autoWidth,
@@ -327,7 +327,7 @@
 				items = this._items,
 				settings = this.settings,
 				view = Math.max(settings.items * 2, 4),
-				size = Math.ceil(items.length / 2) * 2,
+				size = Math.ceil(items.length/2) * 2,
 				repeat = settings.loop && items.length ? settings.rewind ? view : Math.max(view, size) : 0,
 				append = '',
 				prepend = '';
@@ -335,9 +335,9 @@
 			repeat /= 2;
 
 			while (repeat--) {
-				clones.push(this.normalize(clones.length / 2, true));
+				clones.push(this.normalize(clones.length/2, true));
 				append = append + items[clones[clones.length - 1]][0].outerHTML;
-				clones.push(this.normalize(items.length - 1 - (clones.length - 1) / 2, true));
+				clones.push(this.normalize(items.length - 1 - (clones.length - 1)/2, true));
 				prepend = items[clones[clones.length - 1]][0].outerHTML + prepend;
 			}
 
@@ -463,22 +463,22 @@
 
 		this.$element.addClass(this.options.loadingClass);
 
-		// create stage
+		//create stage
 		this.$stage = $('<' + this.settings.stageElement + ' class="' + this.settings.stageClass + '"/>')
 			.wrap('<div class="' + this.settings.stageOuterClass + '"/>');
 
-		// append stage
+		//append stage
 		this.$element.append(this.$stage.parent());
 
-		// append content
+		//append content
 		this.replace(this.$element.children().not(this.$stage.parent()));
 
-		// check visibility
+		//check visibility
 		if (this.$element.is(':visible')) {
-			// update view
+			//update view
 			this.refresh();
 		} else {
-			// invalidate width
+			//invalidate width
 			this.invalidate('width');
 		}
 
@@ -486,7 +486,7 @@
 			.removeClass(this.options.loadingClass)
 			.addClass(this.options.loadedClass);
 
-		// register event handlers
+		//register event handlers
 		this.registerEventHandlers();
 
 		this.leave('initializing');
@@ -520,7 +520,7 @@
 			}
 			delete settings.responsive;
 
-			// responsive class
+			//responsive class
 			if (settings.responsiveClass) {
 				this.$element.attr('class',
 					this.$element.attr('class').replace(new RegExp('(' + this.options.responsiveClass + '-)\\S+\\s', 'g'), '$1' + match)
@@ -783,7 +783,7 @@
 		} else {
 			minimum = this.settings.rtl ? this.coordinates(this.maximum()) : this.coordinates(this.minimum());
 			maximum = this.settings.rtl ? this.coordinates(this.minimum()) : this.coordinates(this.maximum());
-			pull = this.settings.pullDrag ? -1 * delta.x / 5 : 0;
+			pull = this.settings.pullDrag ? -1 * delta.x/5 : 0;
 			stage.x = Math.max(Math.min(stage.x, minimum + pull), maximum + pull);
 		}
 
@@ -844,13 +844,13 @@
 			coordinates = this.coordinates();
 
 		if (!this.settings.freeDrag) {
-			// check closest item
+			//check closest item
 			$.each(coordinates, $.proxy(function(index, value) {
-				// on a left pull, check on current index
+				//on a left pull, check on current index
 				if (direction === 'left' && coordinate > value - pull && coordinate < value + pull) {
 					position = index;
-				// on a right pull, check on previous index
-				// to do so, subtract width from value and set position = index + 1
+				//on a right pull, check on previous index
+				//to do so, subtract width from value and set position = index + 1
 				} else if (direction === 'right' && coordinate > value - width - pull && coordinate < value - width + pull) {
 					position = index + 1;
 				} else if (this.op(coordinate, '<', value)
@@ -862,7 +862,7 @@
 		}
 
 		if (!this.settings.loop) {
-			// non loop boundries
+			//non loop boundries
 			if (this.op(coordinate, '>', coordinates[this.minimum()])) {
 				position = coordinate = this.minimum();
 			} else if (this.op(coordinate, '<', coordinates[this.maximum()])) {
@@ -892,7 +892,7 @@
 		if ($.support.transform3d && $.support.transition) {
 			this.$stage.css({
 				transform: 'translate3d(' + coordinate + 'px,0px,0px)',
-				transition: (this.speed() / 1000) + 's'
+				transition: (this.speed()/1000) + 's'
 			});
 		} else if (animate) {
 			this.$stage.animate({
@@ -997,7 +997,7 @@
 		if (!this.isNumeric(position) || n < 1) {
 			position = undefined;
 		} else if (position < 0 || position >= n + m) {
-			position = ((position - m / 2) % n + n) % n + m / 2;
+			position = ((position - m/2) % n + n) % n + m/2;
 		}
 
 		return position;
@@ -1010,7 +1010,7 @@
 	 * @returns {Number} - The converted position.
 	 */
 	Owl.prototype.relative = function(position) {
-		position -= this._clones.length / 2;
+		position -= this._clones.length/2;
 		return this.normalize(position, true);
 	};
 
@@ -1028,7 +1028,7 @@
 			elementWidth;
 
 		if (settings.loop) {
-			maximum = this._clones.length / 2 + this._items.length - 1;
+			maximum = this._clones.length/2 + this._items.length - 1;
 		} else if (settings.autoWidth || settings.merge) {
 			iterator = this._items.length;
 			reciprocalItemsWidth = this._items[--iterator].width();
@@ -1047,7 +1047,7 @@
 		}
 
 		if (relative) {
-			maximum -= this._clones.length / 2;
+			maximum -= this._clones.length/2;
 		}
 
 		return Math.max(maximum, 0);
@@ -1060,7 +1060,7 @@
 	 * @returns {Number}
 	 */
 	Owl.prototype.minimum = function(relative) {
-		return relative ? 0 : this._clones.length / 2;
+		return relative ? 0 : this._clones.length/2;
 	};
 
 	/**
@@ -1100,9 +1100,9 @@
 	 * @returns {Array.<Number>} - The absolute positions of clones for the item or all if no position was given.
 	 */
 	Owl.prototype.clones = function(position) {
-		var odd = this._clones.length / 2,
+		var odd = this._clones.length/2,
 			even = odd + this._items.length,
-			map = function(index) { return index % 2 === 0 ? even + index / 2 : odd - (index + 1) / 2 };
+			map = function(index) { return index % 2 === 0 ? even + index/2 : odd - (index + 1)/2 };
 
 		if (position === undefined) {
 			return $.map(this._clones, function(v, i) { return map(i) });
@@ -1150,7 +1150,7 @@
 			}
 
 			coordinate = this._coordinates[position];
-			coordinate += (this.width() - coordinate + (this._coordinates[newPosition] || 0)) / 2 * multiplier;
+			coordinate += (this.width() - coordinate + (this._coordinates[newPosition] || 0))/2 * multiplier;
 		} else {
 			coordinate = this._coordinates[newPosition] || 0;
 		}
@@ -1192,7 +1192,7 @@
 			maximum = this.maximum();
 
 		if (this.settings.loop) {
-			if (!this.settings.rewind && Math.abs(distance) > items / 2) {
+			if (!this.settings.rewind && Math.abs(distance) > items/2) {
 				distance += direction * -1 * items;
 			}
 
@@ -1246,11 +1246,11 @@
 	 */
 	Owl.prototype.onTransitionEnd = function(event) {
 
-		// if css2 animation then event object is undefined
+		//if css2 animation then event object is undefined
 		if (event !== undefined) {
 			event.stopPropagation();
 
-			// Catch only owl-stage transitionEnd event
+			//Catch only owl-stage transitionEnd event
 			if ((event.target || event.srcElement || event.originalTarget) !== this.$stage.get(0)) {
 				return false;
 			}
@@ -1743,10 +1743,10 @@
 			}, this)
 		};
 
-		// set default options
+		//set default options
 		this._core.options = $.extend({}, AutoRefresh.Defaults, this._core.options);
 
-		// register event handlers
+		//register event handlers
 		this._core.$element.on(this._handlers);
 	};
 
@@ -1853,14 +1853,14 @@
 
 				if ((e.property && e.property.name == 'position') || e.type == 'initialized') {
 					var settings = this._core.settings,
-						n = (settings.center && Math.ceil(settings.items / 2) || settings.items),
+						n = (settings.center && Math.ceil(settings.items/2) || settings.items),
 						i = ((settings.center && n * -1) || 0),
 						position = (e.property && e.property.value !== undefined ? e.property.value : this._core.current()) + i,
 						clones = this._core.clones().length,
 						load = $.proxy(function(i, v) { this.load(v) }, this);
 
 					while (i++ < n) {
-						this.load(clones / 2 + this._core.relative(position));
+						this.load(clones/2 + this._core.relative(position));
 						clones && $.each(this._core.clones(this._core.relative(position)), load);
 						position++;
 					}
@@ -1868,10 +1868,10 @@
 			}, this)
 		};
 
-		// set the default options
+		//set the default options
 		this._core.options = $.extend({}, Lazy.Defaults, this._core.options);
 
-		// register event handler
+		//register event handler
 		this._core.$element.on(this._handlers);
 	};
 
@@ -1988,10 +1988,10 @@
 			}, this)
 		};
 
-		// set default options
+		//set default options
 		this._core.options = $.extend({}, AutoHeight.Defaults, this._core.options);
 
-		// register event handlers
+		//register event handlers
 		this._core.$element.on(this._handlers);
 	};
 
@@ -2117,10 +2117,10 @@
 			}, this)
 		};
 
-		// set default options
+		//set default options
 		this._core.options = $.extend({}, Video.Defaults, this._core.options);
 
-		// register event handlers
+		//register event handlers
 		this._core.$element.on(this._handlers);
 
 		this._core.$element.on('click.owl.video', '.owl-video-play-icon', $.proxy(function(e) {
@@ -2229,7 +2229,7 @@
 				target.after(icon);
 			};
 
-		// wrap video content into owl-video-wrapper div
+		//wrap video content into owl-video-wrapper div
 		target.wrap('<div class="owl-video-wrapper"' + dimensions + '></div>');
 
 		if (this._core.settings.lazyLoad) {
@@ -2237,7 +2237,7 @@
 			lazyClass = 'owl-lazy';
 		}
 
-		// custom thumbnail
+		//custom thumbnail
 		if (customTn.length) {
 			create(customTn.attr(srcType));
 			customTn.remove();
@@ -2574,10 +2574,10 @@
 			}, this)
 		};
 
-		// register event handlers
+		//register event handlers
 		this._core.$element.on(this._handlers);
 
-		// set default options
+		//set default options
 		this._core.options = $.extend({}, Autoplay.Defaults, this._core.options);
 	};
 
@@ -2797,10 +2797,10 @@
 			}, this)
 		};
 
-		// set default options
+		//set default options
 		this._core.options = $.extend({}, Navigation.Defaults, this._core.options);
 
-		// register event handlers
+		//register event handlers
 		this.$element.on(this._handlers);
 	};
 
@@ -2835,7 +2835,7 @@
 		var override,
 			settings = this._core.settings;
 
-		// create DOM structure for relative navigation
+		//create DOM structure for relative navigation
 		this._controls.$relative = (settings.navContainer ? $(settings.navContainer)
 			: $('<div>').addClass(settings.navContainerClass).appendTo(this.$element)).addClass('disabled');
 
@@ -2854,7 +2854,7 @@
 				this.next(settings.navSpeed);
 			}, this));
 
-		// create DOM structure for absolute navigation
+		//create DOM structure for absolute navigation
 		if (!settings.dotsData) {
 			this._templates = [ $('<div>')
 				.addClass(settings.dotClass)
@@ -2874,7 +2874,7 @@
 			this.to(index, settings.dotsSpeed);
 		}, this));
 
-		// override public methods of the carousel
+		//override public methods of the carousel
 		for (override in this._overrides) {
 			this._core[override] = $.proxy(this[override], this);
 		}
@@ -2907,7 +2907,7 @@
 	 */
 	Navigation.prototype.update = function() {
 		var i, j, k,
-			lower = this._core.clones().length / 2,
+			lower = this._core.clones().length/2,
 			upper = lower + this._core.items().length,
 			maximum = this._core.maximum(true),
 			settings = this._core.settings,
@@ -3139,13 +3139,13 @@
 			}, this)
 		};
 
-		// set default options
+		//set default options
 		this._core.options = $.extend({}, Hash.Defaults, this._core.options);
 
-		// register the event handlers
+		//register the event handlers
 		this.$element.on(this._handlers);
 
-		// register event listener for hash navigation
+		//register event listener for hash navigation
 		$(window).on('hashchange.owl.navigation', $.proxy(function(e) {
 			var hash = window.location.hash.substring(1),
 				items = this._core.$stage.children(),

@@ -384,7 +384,7 @@
 	}
 	
 
-	//LightBox / Fancybox
+	//LightBox/Fancybox
 	if($('.lightbox-image').length) {
 		$('.lightbox-image').fancybox({
 			openEffect  : 'fade',
@@ -400,7 +400,7 @@
 		if($('.masonry-portfolio').length){
 
 			var winDow = $(window);
-			// Needed variables
+			//Needed variables
 			var $container=$('.masonry-portfolio .items-container');
 			var $filter=$('.filter-btns');
 
@@ -416,7 +416,7 @@
 			});
 
 
-			// Isotope Filter
+			//Isotope Filter
 			$filter.find('li').on('click', function(){
 				var selector = $(this).attr('data-filter');
 
@@ -465,11 +465,11 @@
 	enableMasonry();
 	
 	
-	// Scroll to a Specific Div
+	//Scroll to a Specific Div
 	if($('.scroll-to-target').length){
 		$(".scroll-to-target").on('click', function() {
 			var target = $(this).attr('data-target');
-		   // animate
+		   //animate
 		   $('html, body').animate({
 			   scrollTop: $(target).offset().top
 			 }, 1500);
@@ -480,11 +480,11 @@
 
 	if($('.paroller').length){
 		$('.paroller').paroller({
-			  factor: 0.2,            // multiplier for scrolling speed and offset, +- values for direction control  
-			  factorLg: 0.4,          // multiplier for scrolling speed and offset if window width is less than 1200px, +- values for direction control  
-			  type: 'foreground',     // background, foreground  
+			  factor: 0.2,            //multiplier for scrolling speed and offset, +- values for direction control  
+			  factorLg: 0.4,          //multiplier for scrolling speed and offset if window width is less than 1200px, +- values for direction control  
+			  type: 'foreground',     //background, foreground  
 			  direction: 'horizontal',
-			  transition: 'transform 15s ease-in' // vertical, horizontal  
+			  transition: 'transform 15s ease-in' //vertical, horizontal  
 		});
 	}
 
@@ -497,7 +497,7 @@
 	});
 
 
-	// Testimonial 
+	//Testimonial 
 	var galleryThumbs = new Swiper('.testimonial-thumbs', {
 		loop: true,
 		spaceBetween: 10,
@@ -532,7 +532,7 @@
 	});
 
 	
-	//Progress Bar / Levels
+	//Progress Bar/Levels
 	if($('.progress-levels .progress-box .bar-fill').length){
 		$(".progress-box .bar-fill").each(function() {
 			var progressWidth = $(this).attr('data-percent');
@@ -542,43 +542,43 @@
 	}
 
 	$(function() {
-	    // Get the form.
+	    //Get the form.
 	    var form = $('#contact-form');
 
-	    // Get the messages div.
+	    //Get the messages div.
 	    var formMessages = $('#form-messages');
 
 	    $(form).submit(function(event) {
-		    // Stop the browser from submitting the form.
+		    //Stop the browser from submitting the form.
 		    event.preventDefault();
 
-		    // Serialize the form data.
+		    //Serialize the form data.
 			var formData = $(form).serialize();
-			// Submit the form using AJAX.
+			//Submit the form using AJAX.
 			$.ajax({
 			    type: 'POST',
 			    url: $(form).attr('action'),
 			    data: formData
 			})
 			.done(function(response) {
-			    // Make sure that the formMessages div has the 'success' class.
+			    //Make sure that the formMessages div has the 'success' class.
 			    $(formMessages).removeClass('error');
 			    $(formMessages).addClass('success');
 
-			    // Set the message text.
+			    //Set the message text.
 			    $(formMessages).text(response);
 
-			    // Clear the form.
+			    //Clear the form.
 			    $('#name').val('');
 			    $('#email').val('');
 			    $('#message').val('');
 			})
 			.fail(function(data) {
-			    // Make sure that the formMessages div has the 'error' class.
+			    //Make sure that the formMessages div has the 'error' class.
 			    $(formMessages).removeClass('success');
 			    $(formMessages).addClass('error');
 
-			    // Set the message text.
+			    //Set the message text.
 			    if (data.responseText !== '') {
 			        $(formMessages).text(data.responseText);
 			    } else {
@@ -589,15 +589,15 @@
 	});
 
 	
-	// Elements Animation
+	//Elements Animation
 	if($('.wow').length){
 		var wow = new WOW(
 		  {
-			boxClass:     'wow',      // animated element css class (default is wow)
-			animateClass: 'animated', // animation css class (default is animated)
-			offset:       0,          // distance to the element when triggering the animation (default is 0)
-			mobile:       false,       // trigger animations on mobile devices (default is true)
-			live:         true       // act on asynchronously loaded content (default is true)
+			boxClass:     'wow',      //animated element css class (default is wow)
+			animateClass: 'animated', //animation css class (default is animated)
+			offset:       0,          //distance to the element when triggering the animation (default is 0)
+			mobile:       false,       //trigger animations on mobile devices (default is true)
+			live:         true       //act on asynchronously loaded content (default is true)
 		  }
 		);
 		wow.init();

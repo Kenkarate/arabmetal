@@ -90,7 +90,7 @@
 		//cached container for 1em value, populated the first time it's needed
 		eminpx,
 
-		// returns the value of 1em in pixels
+		//returns the value of 1em in pixels
 		getEmValue = function() {
 			var ret,
 				div = doc.createElement('div'),
@@ -106,8 +106,8 @@
 				body.style.background = "none";
 			}
 
-			// 1em in a media query is the value of the default font size of the browser
-			// reset docElem and body to ensure the correct value is returned
+			//1em in a media query is the value of the default font size of the browser
+			//reset docElem and body to ensure the correct value is returned
 			docElem.style.fontSize = "100%";
 			body.style.fontSize = "100%";
 
@@ -126,7 +126,7 @@
 				body.removeChild( div );
 			}
 
-			// restore the original values
+			//restore the original values
 			docElem.style.fontSize = originalHTMLFontSize;
 			if( originalBodyFontSize ) {
 				body.style.fontSize = originalBodyFontSize;
@@ -174,7 +174,7 @@
 						max = parseFloat( max ) * ( max.indexOf( em ) > -1 ? ( eminpx || getEmValue() ) : 1 );
 					}
 
-					// if there's no media query at all (the () part), or min or max is not null, and if either is present, they're true
+					//if there's no media query at all (the () part), or min or max is not null, and if either is present, they're true
 					if( !thisstyle.hasquery || ( !minnull || !maxnull ) && ( minnull || currWidth >= min ) && ( maxnull || currWidth <= max ) ){
 						if( !styleBlocks[ thisstyle.media ] ){
 							styleBlocks[ thisstyle.media ] = [];
@@ -291,8 +291,8 @@
 					translate( styles, thisRequest.href, thisRequest.media );
 					parsedSheets[ thisRequest.href ] = true;
 
-					// by wrapping recursive function call in setTimeout
-					// we prevent "Stack overflow" error in IE7
+					//by wrapping recursive function call in setTimeout
+					//we prevent "Stack overflow" error in IE7
 					w.setTimeout(function(){ makeRequests(); },0);
 				} );
 			}
@@ -309,15 +309,15 @@
 
 				//only links plz and prevent re-parsing
 				if( !!href && isCSS && !parsedSheets[ href ] ){
-					// selectivizr exposes css through the rawCssText expando
+					//selectivizr exposes css through the rawCssText expando
 					if (sheet.styleSheet && sheet.styleSheet.rawCssText) {
 						translate( sheet.styleSheet.rawCssText, href, media );
 						parsedSheets[ href ] = true;
 					} else {
 						if( (!/^([a-zA-Z:]*\/\/)/.test( href ) && !base) ||
 							href.replace( RegExp.$1, "" ).split( "/" )[0] === w.location.host ){
-							// IE7 doesn't handle urls that start with '//' for ajax request
-							// manually add in the protocol
+							//IE7 doesn't handle urls that start with '//' for ajax request
+							//manually add in the protocol
 							if ( href.substring(0,2) === "//" ) { href = w.location.protocol + href; }
 							requestQueue.push( {
 								href: href,
